@@ -1,6 +1,4 @@
 <?php
-include 'includes/db.php';
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -13,10 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <title>Second Chance | University Pre-Loved & Course Gear Marketplace</title>
   <meta name="description" content="Second Chance is the dedicated university marketplace for students to buy, sell, or exchange used textbooks, calculators, Arduino kits, medical coats, and campus essentials safely inside their university.">
   
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display for Chic Editorial Feel -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- System fonts — no external requests needed -->
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/style.css">
