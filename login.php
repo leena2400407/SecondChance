@@ -1,9 +1,12 @@
 <?php
-require_once 'includes/auth.php';
-require_once 'includes/db.php';
+require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/db.php';
 
-if (!empty($_SESSION['user_id'])) {
-    header('Location: index.php');
+if (isLoggedIn()) {
+    header(
+        'Location: ' .
+        (isAdmin() ? 'adminlogin.php' : 'index.php')
+    );
     exit;
 }
 
@@ -18,9 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = 'Please refresh the page and try again.';
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)
+    if (
+        !filter_var($email, FILTER_VALIDATE_EMAIL)
         || strlen($email) > 255
-        || $password === '') {
+        || $password === ''
+    ) {
         $errors[] = 'Please enter your email and password correctly.';
     }
 
@@ -29,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = mysqli_prepare(
                 $conn,
                 'SELECT id, fname, lname, password, role
-                 FROM users WHERE email = ? LIMIT 1'
+                 FROM users
+                 WHERE email = ?
+                 LIMIT 1'
             );
 
             mysqli_stmt_bind_param($stmt, 's', $email);
@@ -40,18 +47,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             mysqli_stmt_close($stmt);
 
-            if ($user
-                && password_verify($password, $user['password'])) {
+            if (
+                $user
+                && password_verify($password, $user['password'])
+            ) {
                 session_regenerate_id(true);
 
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['fname'] = $user['fname'];
+                $_SESSION['email'] = $email;
                 $_SESSION['full_name'] =
                     $user['fname'] . ' ' . $user['lname'];
                 $_SESSION['role'] = $user['role'];
-                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+                $_SESSION['csrf_token'] =
+                    bin2hex(random_bytes(32));
 
-                header('Location: index.php');
+                header(
+                    'Location: ' .
+                    (isAdmin() ? 'adminlogin.php' : 'index.php')
+                );
                 exit;
             } else {
                 $errors[] = 'Incorrect email or password.';
