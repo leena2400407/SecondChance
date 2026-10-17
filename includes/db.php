@@ -2,7 +2,7 @@
 $servername = "localhost";
 $USERNAME = "root";
 $PASSWORD = "";
-$DB = "SecondChance";
+$DB = "second-chance";
 
 $conn = mysqli_connect($servername, $USERNAME, $PASSWORD, $DB);
 
