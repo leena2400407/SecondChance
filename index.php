@@ -11,10 +11,8 @@ if (session_status() === PHP_SESSION_NONE) {
   <title>Second Chance | University Pre-Loved & Course Gear Marketplace</title>
   <meta name="description" content="Second Chance is the dedicated university marketplace for students to buy, sell, or exchange used textbooks, calculators, Arduino kits, medical coats, and campus essentials safely inside their university.">
   
-  <!-- System fonts — no external requests needed -->
-  
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/index.css">
 </head>
 <body>
 

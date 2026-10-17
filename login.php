@@ -96,6 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     <?php endif; ?>
 
+    <?php if (($_GET['message'] ?? '') === 'logged_out'): ?>
+        <div class="message success" role="status">
+         You have logged out successfully.
+        </div>
+    <?php endif; ?>
+
     <form method="post">
         <input type="hidden" name="csrf_token"
                value="<?= escape($_SESSION['csrf_token']) ?>">

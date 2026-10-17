@@ -1,17 +1,13 @@
 <?php
-/**
- * Logout / Session Cleanup Handler
- * Second Chance - University Marketplace
- */
-
 session_start();
 
-// Unset all session variables
-$_SESSION = array();
+// Clear session variables
+$_SESSION = [];
 
 // Delete session cookie
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
+
     setcookie(
         session_name(),
         '',
@@ -27,5 +23,4 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 header("Location: login.php?message=logged_out");
-exit();
-?>
+exit;
