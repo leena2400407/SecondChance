@@ -741,7 +741,8 @@ if (session_status() === PHP_SESSION_NONE) {
   <?php include 'includes/footer.php'; ?>
 
   <!-- Main JavaScript File -->
-  <script src="assets/index.js"></script>
+  <script src="assets/script.js"></script>
 </body>
+
 </html>
 
