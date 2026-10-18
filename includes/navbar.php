@@ -1,10 +1,9 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-$isLoggedIn = isset($_SESSION['email']);
-$userName = $isLoggedIn ? (isset($_SESSION['fname']) ? htmlspecialchars($_SESSION['fname']) : 'Student') : '';
-$userFirstInitial = $isLoggedIn ? strtoupper(substr($userName, 0, 1)) : '';
+require_once __DIR__ . '/auth.php';
+$isLoggedIn = isLoggedIn();
+$rawName = $isLoggedIn ? ($_SESSION['fname'] ?? 'Student') : '';
+$userName = escape($rawName);
+$userFirstInitial = escape(mb_strtoupper(mb_substr($rawName, 0, 1, 'UTF-8'), 'UTF-8'));
 ?>
 <!-- Top Announcement Bar -->
 <div class="top-bar">
@@ -44,6 +43,7 @@ $userFirstInitial = $isLoggedIn ? strtoupper(substr($userName, 0, 1)) : '';
         <li><a href="index.php" class="nav-link active">Home</a></li>
         <li><a href="#categoriesSection" class="nav-link">Majors &amp; Faculties</a></li>
         <li><a href="products.php" class="nav-link">All Products</a></li>
+        <?php if (isLoggedIn()): ?><li><a href="messages.php" class="nav-link">Messages</a></li><?php endif; ?>
         <li>
           <a href="#aiPriceSection" class="nav-link">
             AI Price Check <span class="nav-badge-pill">AI</span>
@@ -81,6 +81,7 @@ $userFirstInitial = $isLoggedIn ? strtoupper(substr($userName, 0, 1)) : '';
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
           </button>
           <div class="user-dropdown" id="userDropdown">
+            <a href="messages.php">Messages</a>
             <a href="seller.php">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
               My Seller Dashboard
