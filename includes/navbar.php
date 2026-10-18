@@ -1,117 +1,296 @@
+
 <?php
 require_once __DIR__ . '/auth.php';
+
 $isLoggedIn = isLoggedIn();
-$rawName = $isLoggedIn ? ($_SESSION['fname'] ?? 'Student') : '';
+
+$rawName = $isLoggedIn
+    ? ($_SESSION['fname'] ?? 'Student')
+    : '';
+
 $userName = escape($rawName);
-$userFirstInitial = escape(mb_strtoupper(mb_substr($rawName, 0, 1, 'UTF-8'), 'UTF-8'));
+
+$userFirstInitial = $isLoggedIn
+    ? escape(mb_strtoupper(
+        mb_substr($rawName, 0, 1, 'UTF-8'),
+        'UTF-8'
+    ))
+    : '';
 ?>
-<!-- Top Announcement Bar -->
+
+<!-- Announcement Bar -->
 <div class="top-bar">
-  <div class="container top-bar-content">
-    <div style="display:flex; align-items:center; gap:8px;">
-      <span class="top-bar-badge">🎓 Campus Verified</span>
-      <span>100% Student-to-Student Pre-Loved Marketplace • Safe Campus Meetups • No Listing Fees</span>
+    <div class="container top-bar-content">
+        <div class="top-bar-message">
+            <span class="top-bar-badge">🎓 Campus Verified</span>
+            <span>
+                Student-to-Student Pre-Loved Marketplace
+                • Safe Campus Meetups • No Listing Fees
+            </span>
+        </div>
+
+        <div class="top-bar-links">
+            <a href="admin.php">🛡️ Moderator Portal</a>
+        </div>
     </div>
-    <div class="top-bar-links">
-      <a href="admin.php">🛡️ Moderator Portal</a>
-    </div>
-  </div>
 </div>
 
-<!-- Main Sticky Navigation Bar -->
+<!-- Main Navigation -->
 <header class="navbar-header">
-  <div class="navbar-container">
-    <!-- Brand Logo -->
-    <a href="index.php" class="brand-logo" aria-label="Second Chance Home">
-      <div class="logo-symbol">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-          <path d="M12 6v6"></path>
-          <path d="M9 9h6"></path>
-        </svg>
-      </div>
-      <div class="logo-text-group">
-        <span class="brand-title">Second<span>Chance</span></span>
-        <span class="brand-tagline">Campus Pre-Loved Hub</span>
-      </div>
-    </a>
+    <div class="navbar-container">
 
-    <!-- Navigation Links -->
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.php" class="nav-link active">Home</a></li>
-        <li><a href="#categoriesSection" class="nav-link">Majors &amp; Faculties</a></li>
-        <li><a href="products.php" class="nav-link">All Products</a></li>
-        <?php if (isLoggedIn()): ?><li><a href="messages.php" class="nav-link">Messages</a></li><?php endif; ?>
-        <li>
-          <a href="#aiPriceSection" class="nav-link">
-            AI Price Check <span class="nav-badge-pill">AI</span>
-          </a>
-        </li>
-        <li><a href="#howItWorksSection" class="nav-link">How It Works</a></li>
-      </ul>
-    </nav>
+        <!-- Logo -->
+        <a href="index.php"
+           class="brand-logo"
+           aria-label="Second Chance Home">
 
-    <!-- Navigation Right Action Buttons -->
-    <div class="nav-actions">
-      <!-- Search Trigger or Quick Jump -->
-      <a href="#showcaseSection" class="search-mini-btn" title="Search items on campus">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </a>
+            <div class="logo-symbol">
+                <svg width="26" height="26"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    <path d="M12 6v6"></path>
+                    <path d="M9 9h6"></path>
+                </svg>
+            </div>
 
-      <!-- Sell an Item CTA Button (leads to Mohab's product-form / seller page) -->
-      <a href="product-form.php" class="btn btn-primary btn-sm" title="List your course book, calculator, or kit">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
-        <span>Sell Gear</span>
-      </a>
+            <div class="logo-text-group">
+                <span class="brand-title">
+                    Second<span>Chance</span>
+                </span>
+                <span class="brand-tagline">Campus Pre-Loved Hub</span>
+            </div>
+        </a>
 
-      <!-- Authentication / Session Hub conforming to uni rubric -->
-      <?php if ($isLoggedIn): ?>
-        <div class="user-menu-wrapper">
-          <button class="user-profile-btn" id="userProfileBtn" type="button" aria-haspopup="true">
-            <span class="user-avatar-mini"><?= $userFirstInitial ?></span>
-            <span class="user-name-text"><?= $userName ?></span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"></path></svg>
-          </button>
-          <div class="user-dropdown" id="userDropdown">
-            <a href="messages.php">Messages</a>
-            <a href="seller.php">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-              My Seller Dashboard
+        <!-- Navigation Links -->
+        <nav class="main-navigation"
+             id="mainNavigation"
+             aria-label="Main navigation">
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+
+                <li>
+                    <a href="index.php#categoriesSection" class="nav-link">
+                        Majors &amp; Faculties
+                    </a>
+                </li>
+
+                <?php if ($isLoggedIn): ?>
+                    <li>
+                        <a href="messages.php" class="nav-link">
+                            Messages
+                        </a>
+                    </li>
+                <?php endif; ?>
+
+                <li>
+                    <a href="index.php#aiPriceSection" class="nav-link">
+                        AI Price Check
+                        <span class="nav-badge-pill">AI</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.php#howItWorksSection" class="nav-link">
+                        How It Works
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Right Side Actions -->
+        <div class="nav-actions">
+
+            <!-- Search -->
+            <a href="index.php#showcaseSection"
+               class="search-mini-btn"
+               aria-label="Search items"
+               title="Search items on campus">
+
+                <svg width="19" height="19"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2.2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
             </a>
-            <a href="product-form.php">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              Post New Listing
+
+            <!-- Sell Gear -->
+            <a href="product-form.php"
+               class="nav-sell-btn"
+               title="List your item for sale">
+
+                <svg width="17" height="17"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2.4"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+
+                <span>Sell Gear</span>
             </a>
-            <a href="admin.php">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              Moderator / Admin
-            </a>
-            <div class="user-dropdown-divider"></div>
-            <a href="logout.php" style="color:#d32f2f;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-              Sign Out
-            </a>
-          </div>
+
+            <!-- Logged-in User -->
+            <?php if ($isLoggedIn): ?>
+
+                <div class="user-menu-wrapper">
+
+                    <button
+                        class="user-profile-btn"
+                        id="userProfileBtn"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="userDropdown">
+
+                        <span class="user-avatar-mini">
+                            <?= $userFirstInitial ?>
+                        </span>
+
+                        <span class="user-name-text">
+                            <?= $userName ?>
+                        </span>
+
+                        <svg width="14" height="14"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2">
+                            <path d="M6 9l6 6 6-6"></path>
+                        </svg>
+                    </button>
+
+                    <div class="user-dropdown" id="userDropdown" hidden>
+
+                        <a href="profile.php">My Profile</a>
+
+                        <a href="messages.php">Messages</a>
+
+                        <a href="seller.php">My Seller Dashboard</a>
+
+                        <a href="product-form.php">Post New Listing</a>
+
+                        <a href="admin.php">Moderator / Admin</a>
+
+                        <div class="user-dropdown-divider"></div>
+
+                        <a href="logout.php" class="nav-logout-link">
+                            Sign Out
+                        </a>
+
+                    </div>
+                </div>
+
+            <?php else: ?>
+
+                <!-- Logged-out User -->
+                <a href="login.php" class="nav-login-btn">
+                    Login
+                </a>
+
+                <a href="signup.php" class="nav-join-btn">
+                    Join Now
+                </a>
+
+            <?php endif; ?>
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="mobile-menu-toggle"
+                id="mobileMenuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="mainNavigation">
+
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
         </div>
-      <?php else: ?>
-        <a href="login.php" class="btn btn-secondary btn-sm" title="Log into your student account">Login</a>
-        <a href="signup.php" class="btn btn-accent btn-sm" title="Create student account">Join Now</a>
-      <?php endif; ?>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
-  </div>
 </header>
+
+<!-- Navbar JavaScript -->
+<script>
+(function () {
+    const navbar = document.querySelector('.navbar-header');
+
+    if (!navbar || navbar.dataset.initialized === 'true') {
+        return;
+    }
+
+    navbar.dataset.initialized = 'true';
+
+    const menuToggle = navbar.querySelector('#mobileMenuToggle');
+    const navigation = navbar.querySelector('#mainNavigation');
+    const profileButton = navbar.querySelector('#userProfileBtn');
+    const userDropdown = navbar.querySelector('#userDropdown');
+
+    // Mobile navigation
+    if (menuToggle && navigation) {
+        menuToggle.addEventListener('click', function () {
+            const isOpen = navigation.classList.toggle('is-open');
+
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.classList.toggle('is-active', isOpen);
+        });
+
+        navigation.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navigation.classList.remove('is-open');
+                menuToggle.classList.remove('is-active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // User dropdown
+    if (profileButton && userDropdown) {
+        profileButton.addEventListener('click', function (event) {
+            event.stopPropagation();
+
+            const isOpen = !userDropdown.classList.contains('is-open');
+
+            userDropdown.classList.toggle('is-open', isOpen);
+            userDropdown.hidden = !isOpen;
+
+            profileButton.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!event.target.closest('.user-menu-wrapper')) {
+                userDropdown.classList.remove('is-open');
+                userDropdown.hidden = true;
+                profileButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                userDropdown.classList.remove('is-open');
+                userDropdown.hidden = true;
+                profileButton.setAttribute('aria-expanded', 'false');
+                profileButton.focus();
+            }
+        });
+    }
+})();
+</script>
