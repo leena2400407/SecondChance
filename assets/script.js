@@ -275,6 +275,42 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       </div>
     `).join('');
+
+    
+    //mohab part product details 
+
+productsGrid.querySelectorAll('.product-card').forEach(card => {
+    card.style.cursor = 'pointer';
+
+    card.addEventListener('click', function (event) {
+
+        // Keep the wishlist and Quick View buttons working normally
+        if (event.target.closest('button')) {
+            return;
+        }
+
+        const productId = Number(this.dataset.id);
+
+        // Find the selected product in the existing products array
+        const selectedProduct = products.find(
+            product => Number(product.id) === productId
+        );
+
+        if (selectedProduct) {
+            // Save all product details for the next page
+            localStorage.setItem(
+                'selectedProduct',
+                JSON.stringify(selectedProduct)
+            );
+
+            // Open the details page directly
+            window.location.href =
+                'product-details.php?id=' + productId;
+        }
+    });
+});
+
+//end mohab part
   }
 
   // Initial render
