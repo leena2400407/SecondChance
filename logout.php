@@ -1,26 +1,14 @@
 <?php
 session_start();
 
-// Clear session variables
-$_SESSION = [];
+require_once __DIR__ . '/includes/auth.php';
 
-// Delete session cookie
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
+clearLoginSession();
 
-    setcookie(
-        session_name(),
-        '',
-        time() - 42000,
-        $params["path"],
-        $params["domain"],
-        $params["secure"],
-        $params["httponly"]
-    );
-}
+header(
+    'Location: ' . BASE_URL
+    . '/login.php?message=logged_out'
+);
 
-// Destroy session
-session_destroy();
-
-header("Location: login.php?message=logged_out");
 exit;
+?>

@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/includes/auth.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -414,7 +412,7 @@ if (session_status() === PHP_SESSION_NONE) {
       </div>
 
       <div style="text-align:center; margin-top:48px;">
-        <a href="products.php" class="btn btn-secondary btn-lg">
+        <a href="index.php#showcaseSection" class="btn btn-secondary btn-lg">
           Browse All 500+ Campus Listings
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
         </a>
@@ -729,7 +727,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             Post a Listing Now
           </a>
-          <a href="products.php" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.3);">
+          <a href="index.php#showcaseSection" class="btn btn-secondary btn-lg" style="background:rgba(255,255,255,0.1); color:#fff; border-color:rgba(255,255,255,0.3);">
             Browse Campus Gear
           </a>
         </div>

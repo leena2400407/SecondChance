@@ -239,12 +239,10 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Listings | Second Chance</title>
     <link rel="stylesheet" href="assets/seller.css?v=20261018-seller2">
+    <link rel="stylesheet" href="assets/index.css">
 </head>
 <body>
-    <div class="topbar">
-        <a class="brand" href="index.php">Second<span>Chance</span></a>
-        <nav class="seller-nav"><a href="messages.php">Messages</a><a href="index.php">← Back to marketplace</a></nav>
-    </div>
+    <?php require __DIR__ . '/includes/navbar.php'; ?>
 
     <main class="dashboard">
         <header class="page-heading">
@@ -376,5 +374,6 @@ document.querySelectorAll('form[data-confirm]').forEach(form => {
     });
 });
 </script>
+<?php sessionTimerMarkup(); ?>
 </body>
 </html>

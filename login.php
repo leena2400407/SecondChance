@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/includes/auth.php';
-require_once __DIR__ . '/includes/db.php';
 
 if (isLoggedIn()) {
     header(
@@ -14,8 +13,8 @@ $errors = [];
 $email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim((string) ($_POST['email'] ?? ''));
-    $password = (string) ($_POST['password'] ?? '');
+    $email = formText('email');
+    $password = formPassword('password');
 
     if (!validToken()) {
         $errors[] = 'Please refresh the page and try again.';
@@ -25,12 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         !filter_var($email, FILTER_VALIDATE_EMAIL)
         || strlen($email) > 255
         || $password === ''
+        || strlen($password) > 72
     ) {
         $errors[] = 'Please enter your email and password correctly.';
     }
 
     if (empty($errors)) {
         try {
+            require_once __DIR__ . '/includes/db.php';
             $stmt = mysqli_prepare(
                 $conn,
                 'SELECT id, fname, lname, password, role
@@ -52,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 && password_verify($password, $user['password'])
             ) {
                 session_regenerate_id(true);
+                $_SESSION['last_activity'] = time();
 
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['fname'] = $user['fname'];
@@ -114,6 +116,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="message success" role="status">
          You have logged out successfully.
         </div>
+    <?php endif; ?>
+
+    <?php if (
+    ($_GET['message'] ?? '') === 'session_expired'
+    ): ?>
+    <div class="message error" role="alert">
+        Your session expired after 15 minutes of inactivity.
+        Please log in again.
+    </div>
     <?php endif; ?>
 
     <form method="post">

@@ -106,7 +106,6 @@ button {
    -------------------------------------------------------------------------- */
 .top-bar {
   background-color: var(--color-primary);
-  color: var(--color-cream);
   font-size: 0.82rem;
   letter-spacing: 0.02em;
   padding: 8px 16px;
@@ -126,7 +125,6 @@ button {
 
 .top-bar-badge {
   background-color: rgba(201, 173, 167, 0.25);
-  color: var(--color-rose);
   padding: 2px 10px;
   border-radius: var(--radius-full);
   font-weight: 600;
@@ -143,52 +141,35 @@ button {
   color: var(--color-lavender);
 }
 
-.top-bar-links a:hover {
-  color: var(--color-cream);
-}
-
 /* --------------------------------------------------------------------------
    Navbar Styles
    -------------------------------------------------------------------------- */
 .navbar-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   background-color: rgba(242, 233, 228, 0.94);
-  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(74, 78, 105, 0.12);
   transition: var(--transition);
 }
 
 .navbar-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 16px 24px;
   max-width: 1240px;
-  margin: 0 auto;
   gap: 20px;
 }
 
 /* Logo */
 .brand-logo {
   display: flex;
-  align-items: center;
   gap: 12px;
-  text-decoration: none;
 }
 
 .logo-symbol {
   width: 42px;
   height: 42px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-cream);
-  box-shadow: 0 4px 12px rgba(34, 34, 59, 0.18);
   transition: var(--transition);
 }
 
@@ -196,17 +177,10 @@ button {
   transform: rotate(-6deg) scale(1.04);
 }
 
-.logo-text-group {
-  display: flex;
-  flex-direction: column;
-}
-
 .brand-title {
   font-size: 1.35rem;
-  font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--color-primary);
-  line-height: 1.1;
 }
 
 .brand-title span {
@@ -218,24 +192,18 @@ button {
 
 .brand-tagline {
   font-size: 0.68rem;
-  text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-lavender);
   font-weight: 700;
 }
 
 /* Nav Links */
 .nav-links {
-  display: flex;
-  align-items: center;
   gap: 28px;
-  list-style: none;
 }
 
 .nav-link {
   font-size: 0.92rem;
   font-weight: 600;
-  color: var(--color-secondary);
   padding: 6px 2px;
   position: relative;
 }
@@ -253,20 +221,13 @@ button {
 }
 
 .nav-link:hover,
-.nav-link.active {
-  color: var(--color-primary);
-}
-
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
 }
 
 .nav-badge-pill {
-  background: var(--color-rose);
-  color: var(--color-primary);
   font-size: 0.65rem;
-  font-weight: 800;
   padding: 2px 6px;
   border-radius: var(--radius-full);
   margin-left: 6px;
@@ -275,8 +236,6 @@ button {
 
 /* Nav Actions */
 .nav-actions {
-  display: flex;
-  align-items: center;
   gap: 14px;
 }
 
@@ -287,7 +246,6 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-secondary);
   background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(154, 140, 152, 0.2);
   transition: var(--transition);
@@ -374,19 +332,13 @@ button {
 }
 
 /* User logged-in session dropdown */
-.user-menu-wrapper {
-  position: relative;
-}
-
 .user-profile-btn {
   display: flex;
-  align-items: center;
   gap: 10px;
   background-color: var(--color-white);
   border: 1px solid rgba(154, 140, 152, 0.3);
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  cursor: pointer;
   transition: var(--transition);
 }
 
@@ -399,7 +351,6 @@ button {
   height: 28px;
   border-radius: 50%;
   background-color: var(--color-rose);
-  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,13 +365,10 @@ button {
 }
 
 .user-dropdown {
-  position: absolute;
   top: calc(100% + 8px);
-  right: 0;
   background-color: var(--color-white);
   min-width: 210px;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
   border: 1px solid rgba(74, 78, 105, 0.1);
   padding: 8px 0;
   display: none;
@@ -438,22 +386,18 @@ button {
   gap: 10px;
   padding: 10px 18px;
   font-size: 0.88rem;
-  color: var(--color-secondary);
 }
 
 .user-dropdown a:hover {
   background-color: var(--color-cream-soft);
-  color: var(--color-primary);
 }
 
 .user-dropdown-divider {
-  height: 1px;
   background-color: rgba(74, 78, 105, 0.08);
   margin: 6px 0;
 }
 
 .mobile-menu-toggle {
-  display: none;
   flex-direction: column;
   gap: 5px;
   width: 32px;
@@ -463,9 +407,7 @@ button {
 }
 
 .mobile-menu-toggle span {
-  display: block;
   width: 22px;
-  height: 2px;
   background-color: var(--color-primary);
   border-radius: 2px;
   transition: var(--transition);
@@ -2994,8 +2936,6 @@ button {
     border: 1px solid #315b43;
     border-radius: 12px;
 
-    background: linear-gradient(135deg, #315b43, #467953);
-    color: #ffffff !important;
 
     font-family: inherit;
     font-size: 14px;
@@ -3003,7 +2943,6 @@ button {
     text-decoration: none !important;
     white-space: nowrap;
 
-    box-shadow: 0 5px 14px rgba(49, 91, 67, 0.20);
     transition: background 0.2s ease,
                 transform 0.2s ease,
                 box-shadow 0.2s ease;
@@ -3015,10 +2954,7 @@ button {
 }
 
 .navbar-header .nav-sell-btn:hover {
-    background: linear-gradient(135deg, #244631, #315b43);
-    color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(49, 91, 67, 0.28);
 }
 
 .navbar-header .nav-sell-btn:focus-visible {
@@ -3089,8 +3025,6 @@ button {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #315b43;
-    color: #ffffff;
     font-weight: 700;
 }
 
@@ -3285,4 +3219,28 @@ button {
     .navbar-header .top-bar-message > span:last-child {
         display: none;
     }
+}
+/* Sell Gear */
+.navbar-header .nav-sell-btn {
+    background: #4A4E69;
+    border-color: #4A4E69;
+    color: #F2E9E4 !important;
+    box-shadow: 0 5px 14px rgba(74, 78, 105, 0.20);
+}
+
+.navbar-header .nav-sell-btn:hover {
+    background: #22223B;
+    border-color: #22223B;
+    color: #F2E9E4 !important;
+    box-shadow: 0 8px 18px rgba(34, 34, 59, 0.28);
+}
+
+.navbar-header .nav-sell-btn:focus-visible {
+    outline-color: #9A8C98;
+}
+
+/* Circle containing L */
+.navbar-header .user-avatar-mini {
+    background: #4A4E69;
+    color: #F2E9E4;
 }

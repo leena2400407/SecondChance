@@ -186,8 +186,6 @@ $userFirstInitial = $isLoggedIn
 
                         <a href="product-form.php">Post New Listing</a>
 
-                        <a href="admin.php">Moderator / Admin</a>
-
                         <div class="user-dropdown-divider"></div>
 
                         <a href="logout.php" class="nav-logout-link">
@@ -294,3 +292,4 @@ $userFirstInitial = $isLoggedIn
     }
 })();
 </script>
+<?php sessionTimerMarkup(); ?>

@@ -27,7 +27,7 @@
       <div class="footer-col">
         <h4>Marketplace</h4>
         <ul class="footer-links">
-          <li><a href="products.php">All Course Items</a></li>
+          <li><a href="index.php#showcaseSection">All Course Items</a></li>
           <li><a href="#categoriesSection">Academic Majors</a></li>
           <li><a href="product-form.php">Post a Listing</a></li>
           <li><a href="#aiPriceSection">AI Fair Price Tool</a></li>
@@ -41,7 +41,6 @@
           <li><a href="login.php">Student Login</a></li>
           <li><a href="signup.php">Create Account</a></li>
           <li><a href="seller.php">Seller Portal</a></li>
-          <li><a href="admin.php">Admin & Moderation</a></li>
           <li><a href="#howItWorksSection">Safe Campus Meetups</a></li>
         </ul>
       </div>

@@ -1,6 +1,9 @@
 
 <?php
-$productId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+require_once __DIR__ . '/includes/auth.php';
+$productId = isset($_GET['id'])
+    ? (int) $_GET['id']
+    : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
