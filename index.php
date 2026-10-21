@@ -93,16 +93,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 1: Arduino Uno Kit -->
               <div class="hero-slide active" data-index="0">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Engineering • Hall 3
-                  </span>
                   <span class="hero-card-condition">Like New</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=700&q=80" alt="Arduino Uno Complete Kit">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 490 – 550 EGP
                   </div>
                 </div>
@@ -122,16 +117,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 2: Casio fx-991EX Calculator -->
               <div class="hero-slide" data-index="1">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Central Library • 2nd Fl.
-                  </span>
                   <span class="hero-card-condition">Like New</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1594980596870-8aa52a78d8cd?auto=format&fit=crop&w=700&q=80" alt="Casio Calculator">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 450 – 500 EGP
                   </div>
                 </div>
@@ -151,16 +141,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 3: Pure Cotton Lab Coat & Dissection Kit -->
               <div class="hero-slide" data-index="2">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Faculty of Medicine Gate
-                  </span>
                   <span class="hero-card-condition">Like New</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=700&q=80" alt="Medical Lab Coat">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 320 – 360 EGP
                   </div>
                 </div>
@@ -180,16 +165,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 4: Rotring Drawing Set -->
               <div class="hero-slide" data-index="3">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Architecture Studios • Bldg D
-                  </span>
                   <span class="hero-card-condition" style="background:#e3f2fd; color:#1565c0;">Good Condition</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=700&q=80" alt="Architecture Drafting Set">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 460 – 520 EGP
                   </div>
                 </div>
@@ -209,16 +189,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 5: Raspberry Pi 4 Model B -->
               <div class="hero-slide" data-index="4">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    CS Faculty Lounge
-                  </span>
                   <span class="hero-card-condition">Like New</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80" alt="Raspberry Pi 4">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 1750 – 1950 EGP
                   </div>
                 </div>
@@ -238,16 +213,11 @@ require_once __DIR__ . '/includes/auth.php';
               <!-- Slide 6: Organic Chemistry Molecular Kit -->
               <div class="hero-slide" data-index="5">
                 <div class="hero-card-header">
-                  <span class="hero-card-badge">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    Pharmacy Lab 3
-                  </span>
                   <span class="hero-card-condition">Like New</span>
                 </div>
                 <div class="hero-card-visual">
                   <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=700&q=80" alt="Chemistry Molecular Kit">
                   <div class="hero-card-ai-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     AI Valued: 290 – 330 EGP
                   </div>
                 </div>
