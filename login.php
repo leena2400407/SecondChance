@@ -87,6 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Second Chance</title>
     <link rel="stylesheet" href="assets/auth.css">
+
+    <a href="index.php" style="position: absolute; top: 20px; right: 20px; color: #4A4E69;">
+        View Marketplace 
+    </a>
 </head>
 <body>
 

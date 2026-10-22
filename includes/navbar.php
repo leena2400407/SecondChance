@@ -181,7 +181,7 @@ $userFirstInitial = $isLoggedIn
 
                         <a href="profile.php">My Profile</a>
 
-                        <a href="messages.php">Messages</a>
+                        <a href="chat.php">Messages</a>
 
                         <a href="seller.php">My Seller Dashboard</a>
 
