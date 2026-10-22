@@ -186,6 +186,25 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   ];
 
+//Walid Profile start
+
+// Make products available to other pages
+window.SC_PRODUCTS = products;
+
+function getWishlistIds() {
+    return JSON.parse(
+        localStorage.getItem("secondChanceWishlist") || "[]"
+    ).map(Number);
+}
+
+function saveWishlistIds(ids) {
+    localStorage.setItem(
+        "secondChanceWishlist",
+        JSON.stringify(ids)
+    );
+}
+////walid profile end
+
   // --------------------------------------------------------------------------
   // Render Products in Grid
   // --------------------------------------------------------------------------
@@ -228,7 +247,13 @@ document.addEventListener('DOMContentLoaded', function () {
             <span class="badge ${item.conditionClass}">${item.condition}</span>
           </div>
 
-          <button class="product-wishlist-btn" title="Save to Wishlist" onclick="toggleWishlist(${item.id}, event)">
+<button
+    class="product-wishlist-btn"
+    title="Save to Wishlist"
+    data-saved="${getWishlistIds().includes(Number(item.id))}"
+    onclick="toggleWishlist(${item.id}, event)"
+    style="${getWishlistIds().includes(Number(item.id)) ? 'color: red;' : ''}"
+>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
@@ -691,26 +716,48 @@ productsGrid.querySelectorAll('.product-card').forEach(card => {
     showToast(`🎉 Offer of ${amount ? amount + ' EGP' : 'interest'} sent to student seller!`);
   };
 
-  // --------------------------------------------------------------------------
+ //Walid part 
   // Wishlist Toggle
-  // --------------------------------------------------------------------------
-  window.toggleWishlist = function (id, event) {
-    if (event) event.stopPropagation();
-    const btn = event.currentTarget;
-    const isSaved = btn.getAttribute('data-saved') === 'true';
 
-    if (isSaved) {
-      btn.setAttribute('data-saved', 'false');
-      btn.style.color = '';
-      btn.innerHTML = `<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-      showToast('Removed from saved items');
-    } else {
-      btn.setAttribute('data-saved', 'true');
-      btn.style.color = '#e53935';
-      btn.innerHTML = `<svg width="17" height="17" viewBox="0 0 24 24" fill="#e53935" stroke="#e53935" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`;
-      showToast('❤️ Saved to your campus wishlist!');
+window.toggleWishlist = function (id, event) {
+    if (event) {
+        event.stopPropagation();
     }
-  };
+
+    const productId = Number(id);
+    const btn = event ? event.currentTarget : null;
+
+    let wishlist = getWishlistIds();
+
+    if (wishlist.includes(productId)) {
+        // Remove the product
+        wishlist = wishlist.filter(function (item) {
+            return item !== productId;
+        });
+
+        if (btn) {
+            btn.setAttribute("data-saved", "false");
+            btn.style.color = "";
+        }
+
+        showToast("Removed from saved items");
+
+    } else {
+        // Add the product
+        wishlist.push(productId);
+
+        if (btn) {
+            btn.setAttribute("data-saved", "true");
+            btn.style.color = "red";
+        }
+
+        showToast("❤️ Saved to your campus wishlist!");
+    }
+
+    // Save the updated wishlist
+    saveWishlistIds(wishlist);
+};
+//end of walid part
 
   // --------------------------------------------------------------------------
   // Toast Notification System
@@ -954,4 +1001,3 @@ productsGrid.querySelectorAll('.product-card').forEach(card => {
   // Start auto-slide
   startSlideshow();
 });
-
