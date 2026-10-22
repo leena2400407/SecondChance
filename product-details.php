@@ -335,6 +335,7 @@ $productId = isset($_GET['id'])
 </main>
 
 <?php include 'includes/footer.php'; ?>
+<script src="assets/script.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

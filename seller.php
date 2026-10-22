@@ -373,7 +373,9 @@ document.querySelectorAll('form[data-confirm]').forEach(form => {
         if (form.dataset.confirm && !window.confirm(form.dataset.confirm)) event.preventDefault();
     });
 });
+
 </script>
+<script src="assets/script.js"></script>
 <?php sessionTimerMarkup(); ?>
 </body>
 </html>

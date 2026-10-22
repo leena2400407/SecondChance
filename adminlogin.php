@@ -182,6 +182,7 @@ requireAdmin();
 </dialog>
 
 <?php sessionTimerMarkup(); ?>
+<script src="assets/script.js"></script>
 
 </body>
 </html>

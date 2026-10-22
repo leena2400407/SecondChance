@@ -493,6 +493,7 @@ if (file_exists(__DIR__ . '/includes/footer.php')) {
     }
 })();
 </script>
+<script src="assets/script.js"></script>
 
 </body>
 </html>
