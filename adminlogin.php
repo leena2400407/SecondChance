@@ -18,12 +18,10 @@ requireAdmin();
     <link rel="stylesheet" href="assets/admin.css">
 
     <script src="assets/admin.js" defer></script>
+    <?php require __DIR__ . '/includes/navbar.php'; ?>
 </head>
 
 <body>
-
-<?php require __DIR__ . '/includes/navbar.php'; ?>
-
 <main class="admin-app">
 
     <header class="admin-heading">

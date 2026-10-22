@@ -285,16 +285,6 @@ if (file_exists(__DIR__ . '/includes/navbar.php')) {
 
 <div class="chat-wrapper">
 
-    <!-- Mode Banner & Role Switcher -->
-    <div class="chat-mode-bar">
-        <div>
-            <strong>Campus Chatbox</strong> • <span id="viewModeText">Viewing as Buyer</span>
-        </div>
-        <button type="button" class="btn-role-toggle" id="btnRoleToggle">
-            ⇄ Switch to Seller View
-        </button>
-    </div>
-
     <!-- Main Chat Card -->
     <div class="chat-app">
 

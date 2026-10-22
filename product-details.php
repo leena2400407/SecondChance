@@ -299,9 +299,11 @@ $productId = isset($_GET['id'])
 
                     <!-- Actions -->
                     <div class="details-actions">
+                        <a href="messages.php">
                         <button type="button" id="contactSellerBtn" class="details-btn details-btn-primary">
                             <span>✉</span> Contact Seller
                         </button>
+                        </a>
 
                         <button type="button" id="shareProductBtn" class="details-btn details-btn-secondary">
                             <span>↗</span> Share Product

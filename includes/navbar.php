@@ -28,10 +28,11 @@ $userFirstInitial = $isLoggedIn
                 • Safe Campus Meetups • No Listing Fees
             </span>
         </div>
-
-        <div class="top-bar-links">
-            <a href="admin.php">🛡️ Moderator Portal</a>
-        </div>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+            <div class="top-bar-links">
+            <a href="adminlogin.php">🛡️ Admin Portal</a>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -85,7 +86,7 @@ $userFirstInitial = $isLoggedIn
 
                 <?php if ($isLoggedIn): ?>
                     <li>
-                        <a href="messages.php" class="nav-link">
+                        <a href="chat.php" class="nav-link">
                             Messages
                         </a>
                     </li>
@@ -202,7 +203,7 @@ $userFirstInitial = $isLoggedIn
                     Login
                 </a>
 
-                <a href="signup.php" class="nav-join-btn">
+                <a href="signup.php" class="nav-join-btn" style="background: #4A4E69;color: #F2E9E4;">
                     Join Now
                 </a>
 
