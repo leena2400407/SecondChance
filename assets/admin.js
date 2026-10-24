@@ -1,7 +1,5 @@
 (() => {
-    "use strict";
-
-    const STORAGE_KEY = "secondChanceAdminMatchingFormsV3";
+    "use strict";//strict mode for better error checking
 
     const categories = {
         books: "Books and Notes",
@@ -128,24 +126,6 @@
 
     let data = cloneSeed();
     let section = "listings";
-    let storageAvailable = true;
-
-    try {
-        const saved = JSON.parse(
-            localStorage.getItem(STORAGE_KEY) || "null"
-        );
-
-        if (
-            saved
-            && Array.isArray(saved.users)
-            && Array.isArray(saved.listings)
-            && Array.isArray(saved.activity)
-        ) {
-            data = saved;
-        }
-    } catch {
-        storageAvailable = false;
-    }
 
     function fullName(user) {
         return user
@@ -159,14 +139,14 @@
         );
     }
 
-    function nextId(records) {
+    function nextId(records) {//find the next available id for a new record
         return Math.max(
             0,
             ...records.map(record => Number(record.id))
         ) + 1;
     }
 
-    function notice(message) {
+    function notice(message) {//display a notice to the admin 
         $("adminNotice").textContent = message;
         $("adminNotice").hidden = false;
     }
@@ -179,27 +159,8 @@
 
         data.activity = data.activity.slice(0, 200);
 
-        try {
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(data)
-            );
-
-            storageAvailable = true;
-        } catch {
-            storageAvailable = false;
-        }
-
         render();
-
-        notice(
-            message
-            + (
-                storageAvailable
-                    ? " Demo changes saved in this browser."
-                    : " Changes are temporary because browser storage is full or unavailable."
-            )
-        );
+        notice(message + " Demo changes last until the page is reloaded.");
     }
 
     function makeButton(text, action, style = "secondary") {
@@ -265,7 +226,7 @@
         });
     }
 
-    function renderStats() {
+    function renderStats() {//manage dashboard cells in the top
         const values = [
             [
                 "Total Listings",
@@ -313,7 +274,7 @@
         });
     }
 
-    function renderTable() {
+    function renderTable() {//betrsem el gadwal 
         const headings = {
             listings: [
                 "Listing",
@@ -496,7 +457,7 @@
         render();
     }
 
-    function openDialog(title) {
+    function openDialog(title) {//opens forms in the pages 
         $("dialogHeading").textContent = title;
         $("dialogBody").replaceChildren();
 
@@ -508,7 +469,7 @@
             && /^data:image\/(?:jpeg|png|webp);base64,/i.test(value);
     }
 
-    function viewRecord(type, id) {
+    function viewRecord(type, id) {//view the details of a record 
         const record = data[type].find(item => item.id === id);
 
         if (!record) return;
@@ -653,7 +614,7 @@
         return row;
     }
 
-    async function readImage(file) {
+    async function readImage(file) {//read and validate the image file size
         if (
             !["image/jpeg", "image/png", "image/webp"]
                 .includes(file.type)
@@ -715,7 +676,7 @@
             && namePattern.test(value);
     }
 
-    function openEditor(type, id = null) {
+    function openEditor(type, id = null) {//open the form to add or edit a record
         const existing = id === null
             ? null
             : data[type].find(item => item.id === id);
@@ -1274,7 +1235,6 @@
                 data[type].unshift(updated);
             }
 
-            // Clear password fields before closing the user form.
             form.querySelectorAll('input[type="password"]')
                 .forEach(input => {
                     input.value = "";
@@ -1332,7 +1292,6 @@
             return;
         }
 
-        // Image data is excluded to keep exported CSV files readable.
         const exportRows = records.map(record => {
             if (section === "listings") {
                 return {
@@ -1419,19 +1378,6 @@
 
     $("adminDialog").addEventListener("close", () => {
         $("dialogBody").replaceChildren();
-    });
-
-    $("resetDemo").addEventListener("click", () => {
-        if (!confirm("Reset all demo records and activity?")) {
-            return;
-        }
-
-        data = cloneSeed();
-
-        $("searchInput").value = "";
-        $("statusFilter").value = "";
-
-        save("Demo data reset.");
     });
 
     setSection("listings");

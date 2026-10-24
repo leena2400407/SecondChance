@@ -1,7 +1,8 @@
 <?php
+//is there a session or no 
 if (session_status() === PHP_SESSION_NONE) {
-    ini_set('session.use_strict_mode', '1');
-    ini_set('session.use_only_cookies', '1');
+    ini_set('session.use_strict_mode', '1');//prevent session fixation attack 
+    ini_set('session.use_only_cookies', '1');//use cookies only for session id
 
     session_set_cookie_params([
         'lifetime' => 0,
@@ -20,7 +21,7 @@ if (!defined('BASE_URL')) {
 }
 const SESSION_IDLE_SECONDS = 900; // 15 minutes
 
-function clearLoginSession()
+function clearLoginSession()//clear and destroy the session
 {
     $_SESSION = [];
 
@@ -83,13 +84,13 @@ if ($isActivityRequest) {
     header('Cache-Control: no-store');
 
     if (!isLoggedIn()) {
-        http_response_code(401);
+        http_response_code(401);//unauthorized
         echo json_encode(['expired' => true]);
         exit;
     }
 
     if (!validToken()) {
-        http_response_code(403);
+        http_response_code(403);//forbidden since no token 
         echo json_encode(['error' => 'Invalid request']);
         exit;
     }
@@ -103,7 +104,8 @@ if ($isActivityRequest) {
     exit;
 }
 
-function escape($value)
+function escape($value)//prevent XSS attacks=>prevent malicious js, symbols
+// are converted to html instead of executing them
 {
     return htmlspecialchars(
         (string) $value,
@@ -123,7 +125,7 @@ function isAdmin()
         && ($_SESSION['role'] ?? '') === 'admin';
 }
 
-function validToken()
+function validToken()//prevent CSRF attacks
 {
     return isset($_POST['csrf_token'])
         && is_string($_POST['csrf_token'])
@@ -165,14 +167,14 @@ function currentUser()
         'role'      => $_SESSION['role'] ?? 'user'
     ];
 }
-function formText($key)
+function formText($key)//gets value from the form and trims spaces 
 {
     return is_string($_POST[$key] ?? null)
         ? trim($_POST[$key])
         : '';
 }
 
-function formPassword($key)
+function formPassword($key)//gets value from the form
 {
     return is_string($_POST[$key] ?? null)
         ? $_POST[$key]
@@ -240,7 +242,8 @@ function sessionTimerMarkup()
             );
         }
 
-        async function activity(event) {
+        async function activity(event) {//send activity ping to server when the user interacts 
+        // to keep session alive at most 1 every 30 sec.
             if (
                 !event.isTrusted
                 || pending
@@ -294,13 +297,13 @@ function sessionTimerMarkup()
             );
         });
 
-        setInterval(() => {
+        setInterval(() => {//check every second if the session has expired
             if (Date.now() >= expires) {
                 expire();
             }
         }, 1000);
 
-        document.addEventListener('visibilitychange', () => {
+        document.addEventListener('visibilitychange', () => {//if switching of tabs happens, recheck the seesion 
             if (!document.hidden && Date.now() >= expires) {
                 expire();
             }

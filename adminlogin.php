@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/auth.php';//better than include
 requireAdmin();
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ requireAdmin();
     <link rel="stylesheet" href="assets/index.css">
     <link rel="stylesheet" href="assets/admin.css">
 
-    <script src="assets/admin.js" defer></script>
+    <script src="assets/admin.js" defer></script>//starts working after reading the html
     <?php require __DIR__ . '/includes/navbar.php'; ?>
 </head>
 
